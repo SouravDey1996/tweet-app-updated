@@ -16,9 +16,9 @@
           <li class="nav-item">
             <a class="nav-link" routerLink='/tweets' routerLinkActive='active' *ngIf="loggedIn()">Tweets</a>
           </li>
-          <li class="nav-item">
+          <!-- <li class="nav-item">
             <a class="nav-link" routerLink='/users' routerLinkActive='active' *ngIf="loggedIn()">All Users</a>
-          </li>
+          </li> -->
           
         </ul>
         <div *ngIf="loggedIn()" class="dropdown" dropdown>
@@ -27,7 +27,7 @@
           </a>
           <div class="dropdown-menu mt-3" *dropdownMenu> 
             <a class="dropdown-item" (click)="resetPassword()"
-              ><i class="fa fa-sign-out"></i> Reset Password</a
+              ><i class="fa fa-key" ></i> Reset Password</a
             >
            
             <a class="dropdown-item" (click)="logout()"

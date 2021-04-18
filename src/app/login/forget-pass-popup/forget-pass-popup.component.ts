@@ -28,14 +28,14 @@ baseUrl:any='http://localhost:5000/tweetapp/';
     this.initializeForm();
   }
    sendOtp(){
-     console.log("sendOtp",this.loginId)
+    //  console.log("sendOtp",this.loginId)
      let jsonPayLoad={
        "loginId":this.loginId
      }
      let sendOtpUrl=this.baseUrl+'sendOTP/user'
      this.http.post(sendOtpUrl,jsonPayLoad).subscribe(result=>{
       this.otp=result;
-      console.log('OTP::',this.otp);
+      // console.log('OTP::',this.otp);
        this.toastr.success('Otp sent successfully')
        this.otpSent=true;
        this.validityFlag=false;
@@ -46,7 +46,7 @@ baseUrl:any='http://localhost:5000/tweetapp/';
     
    }
    validateOtp(){
-     console.log("OTP VAlue:::",this.otpValue)
+    //  console.log("OTP VAlue:::",this.otpValue)
     if(this.otpValue==this.otp){
       this.toastr.success('OTP validated Successfully!!')
       this.validityFlag=true;

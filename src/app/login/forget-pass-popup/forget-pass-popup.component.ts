@@ -4,7 +4,7 @@ import { AbstractControl, FormControl, FormGroup, ValidatorFn, Validators } from
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
-import { ChangePasswordComponent } from '../change-password/change-password.component';
+
 
 @Component({
   selector: 'app-forget-pass-popup',
@@ -35,7 +35,7 @@ baseUrl:any='http://localhost:5000/tweetapp/';
      let sendOtpUrl=this.baseUrl+'sendOTP/user'
      this.http.post(sendOtpUrl,jsonPayLoad).subscribe(result=>{
       this.otp=result;
-      // console.log('OTP::',this.otp);
+      console.log('OTP::',this.otp);
        this.toastr.success('Otp sent successfully')
        this.otpSent=true;
        this.validityFlag=false;
@@ -93,8 +93,9 @@ baseUrl:any='http://localhost:5000/tweetapp/';
     if(this.changePasswordForm.valid){
       this.http.post(updatePasswordUrl,jsonPayload).subscribe(result=>{
         this.toastr.success('Updated Successfully');
-        location.reload();
+        
         localStorage.removeItem('username');
+        let dialogRef=this.dialog.closeAll()
       },
       error=>{
         this.toastr.error(error.error);

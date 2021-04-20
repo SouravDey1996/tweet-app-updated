@@ -19,13 +19,14 @@ import { HashtagMentionColLibModule } from 'hashtag-mention-colorizer';
 import { ToastrModule } from 'ngx-toastr';
 import { HttpClientModule} from '@angular/common/http';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
-import { ChangePasswordComponent } from './login/change-password/change-password.component';
+
+// import { MentionModule } from 'angular-mentions';
 
 @NgModule({
   declarations: [						
     AppComponent,
    NavComponent, HomeComponent, LoginComponent, RegisterComponent, TweetsComponent, UsersComponent, 
-   ForgetPassPopupComponent, ChangePasswordComponent,
+   ForgetPassPopupComponent,
    ],
   imports: [
     BrowserModule,
@@ -39,7 +40,8 @@ import { ChangePasswordComponent } from './login/change-password/change-password
     HashtagMentionColLibModule,
     ToastrModule.forRoot(),
     BsDropdownModule.forRoot(),
-    HttpClientModule
+    HttpClientModule,
+    
   ],
   providers: [],
   bootstrap: [AppComponent]

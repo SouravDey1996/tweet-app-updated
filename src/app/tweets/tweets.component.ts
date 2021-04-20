@@ -2,6 +2,8 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import {formatDate} from '@angular/common';
 import { ToastrService } from 'ngx-toastr';
+import { MentionConfig } from 'angular-mentions';
+
 declare var require: any
 @Component({
   selector: 'app-tweets',
@@ -10,7 +12,7 @@ declare var require: any
 })
 export class TweetsComponent implements OnInit {
   dateFormat:any;
-  tweetData:any;
+  tweetData:any='';
   userName:any;
   baseUrl:any='http://localhost:5000/tweetapp/';
   userData:any;
@@ -23,6 +25,7 @@ export class TweetsComponent implements OnInit {
   constructor(private http:HttpClient,private toastr:ToastrService) { }
 
   ngOnInit(): void {
+ 
     this.dateFormat=formatDate(this.dateTime, 'yyyy-MM-dd HH:mm:ss', 'en').toString();
     console.log("CurrentDate",this.dateFormat.toString());
     this.userName=localStorage.getItem('token');
@@ -50,6 +53,7 @@ postTweet(){
     }
   
   let postTweetUrl=this.baseUrl+'tweets/tweet'
+  
   this.http.post(postTweetUrl,this.mockTweet).subscribe(result=>
     {
       this.toastr.success('Tweet Posted Successfully!!!')

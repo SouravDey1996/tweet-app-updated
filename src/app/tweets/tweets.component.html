@@ -21,7 +21,7 @@
                 
             </div>
             <div class="col">
-                <button class="btn btn-primary f-right" (click)="postTweet()">Post</button>
+                <button class="btn btn-primary f-right" [disabled]="tweetData.length==0 || tweetData==null || tweetData.trim()==''" (click)="postTweet()">Post</button>
             </div>
         </div>
 
@@ -52,7 +52,7 @@
                 </div>
                 <div class="reply-box mt-3 ml-5" attr.id={{tweet.id}}>
                     <div class="input-group mb-3" attr.id={{tweet.id}}>
-                        <input type="text" class="form-control" maxlength="144" #replyData name="reply_{{tweet.id}}" placeholder="Reply" >
+                        <input type="text" class="form-control"  maxlength="144" #replyData     placeholder="Reply" >
                         <div class="input-group-append" >
                           <button class=" btn btn-primary"   (click)="replyTweet(tweet.id,replyData.value)">Reply</button>
                         </div>

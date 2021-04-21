@@ -19,6 +19,8 @@ import { HashtagMentionColLibModule } from 'hashtag-mention-colorizer';
 import { ToastrModule } from 'ngx-toastr';
 import { HttpClientModule} from '@angular/common/http';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
+import { TimeagoModule } from 'ngx-timeago';
+
 
 // import { MentionModule } from 'angular-mentions';
 
@@ -41,7 +43,13 @@ import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
     ToastrModule.forRoot(),
     BsDropdownModule.forRoot(),
     HttpClientModule,
+    TimeagoModule.forRoot(),
+    HashtagMentionColLibModule
     
+  ],
+  exports: [
+    HashtagMentionColLibModule,
+    TimeagoModule
   ],
   providers: [],
   bootstrap: [AppComponent]

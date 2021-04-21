@@ -28,7 +28,7 @@ initializeForm(){
     password:new FormControl('',[Validators.required,Validators.minLength(4),Validators.maxLength(8)]),
     confirmPassword:new FormControl('',[Validators.required,this.matchValues('password')]),
     loginID:new FormControl('',Validators.required),
-    contactNumber: new FormControl('',Validators.required)
+    contactNumber: new FormControl('', [Validators.required, Validators.pattern("^((\\+91-?)|0)?[0-9]{10}$")])
 
 
   })

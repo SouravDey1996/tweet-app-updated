@@ -12,7 +12,7 @@ declare var require: any
 })
 export class TweetsComponent implements OnInit {
   dateFormat:any;
-  tweetData:any='';
+  tweetData='';
   userName:any;
   baseUrl:any='http://localhost:5000/tweetapp/';
   userData:any;
@@ -72,6 +72,7 @@ getAllTweets(){
   let getTweetUrl=this.baseUrl + 'tweets'
   this.http.get(getTweetUrl).subscribe(result=>{
     this.allTweets=result;
+  
     console.log("AllTweets::",this.allTweets);
   })
 }

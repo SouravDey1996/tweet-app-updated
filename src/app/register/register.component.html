@@ -66,7 +66,7 @@
                             <div class="form-group row">
                                 <label for="user_name" class="col-md-4 col-form-label text-md-right">Confirm Password</label>
                                 <div class="col-md-6">
-                                    <input type="text" 
+                                    <input type="password" 
                                     [class.is-invalid]='registerForm.get("confirmPassword").errors && registerForm.get("confirmPassword").touched'
                                     class="form-control" formControlName="confirmPassword">
                                     <div *ngIf="registerForm.get('confirmPassword').hasError('required')" class='invalid-feedback'>Please enter Confirm Password</div>
@@ -77,10 +77,11 @@
                             <div class="form-group row">
                                 <label for="phone_number" class="col-md-4 col-form-label text-md-right">Contact Number</label>
                                 <div class="col-md-6">
-                                    <input type="text" 
+                                    <input type="string" maxlength="10"
                                     [class.is-invalid]='registerForm.get("contactNumber").errors && registerForm.get("contactNumber").touched'
                                     class="form-control" formControlName="contactNumber">
-                                    <div class='invalid-feedback'>Please enter your Contact Number</div>
+                                    <div *ngIf="registerForm.get('contactNumber').hasError('required')" class='invalid-feedback'>Please enter your Contact Number</div>
+                                    <div *ngIf="registerForm.get('contactNumber').hasError('pattern')" class='invalid-feedback'>Invalid Phone Number</div>
                                 </div>
                                 
                             </div>

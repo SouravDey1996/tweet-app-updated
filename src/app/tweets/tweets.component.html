@@ -1,15 +1,15 @@
 
 <div class="row container-fluid mt-5 d-flex justify-content-left">
-    <div class="col-md-4 card p-3">
+    <div class="col-md-4 card p-3 " style="border:1px solid #bababa">
         <div class="d-flex align-items-center">
             <div class="image"> <img src="https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=80" class="rounded" width="155"> </div>
             <div class="ml-3 w-100">
-                <h4 class="mb-0 mt-0">{{userData?.firstName |titlecase}} {{userData?.lastName|titlecase}}</h4> <span>@{{userName}}</span>
-                <div class="p-2 mt-2 bg-primary d-flex justify-content-between rounded text-white stats">
+                <h4 class="mb-0 mt-0">{{userData?.firstName |titlecase}} {{userData?.lastName|titlecase}}</h4> <span class="tweet-color">@{{userName}}</span>
+                <!-- <div class="p-2 mt-2 bg-primary d-flex justify-content-between rounded text-white stats">
                     <div class="d-flex flex-column"> <span class="articles">Followers</span> <span class="number1">38</span> </div>
                     <div class="d-flex flex-column"> <span class="followers">{{dateFormat|date: 'MMM d, y, h:mm a'}}</span> <span class="number2">980</span> </div>
                     
-                </div>
+                </div> -->
 
             </div>
         </div>
@@ -33,21 +33,23 @@
         <div class="row  box">
             <div class="image col-md-2"> <img src="assets/pngtree-user-vector-avatar-png-image_1541962.jpg" class="rounded" width="155"> </div>
             <div class="ml-3 w-100 col">
-                <h6 class="mb-0 mt-0">{{tweet?.postedBy}}</h6><span>@{{tweet?.loginId}}</span>
+                <h6 class="mb-0 mt-0">{{tweet?.postedBy}}</h6><span class="tweet-color">@{{tweet?.loginId}}</span>
                 <div class="p-2 mt-2 bg-primary d-flex justify-content-between rounded text-white stats">
-                   {{tweet?.body}}
+                   <!-- {{tweet?.body}} -->
+                   <span [innerHTML]="tweet?.body|hmColor"></span>
                     
                 </div>
-                <small class="f-right mt-2">{{tweet.createdOn| date: 'MMM d, y, h:mm a'}}</small><br>
+                <small class="f-right mt-2">{{tweet.createdOn| timeago}}</small><br>
                 <div class="replies">
                     <div *ngIf="tweet.replies.length>0" class="p-2"><strong>Replies</strong></div>
                     <div *ngFor="let reply of tweet.replies" >
-                        <h6 class="mb-0 mt-0 ml-5">{{reply?.repliedBy}}</h6><span class="ml-5">@{{reply?.replyLoginId}}</span>&nbsp;<span>{{reply?.createdOn | date: 'MMM d, y, h:mm a'}}</span>
+                        <h6 class="mb-0 mt-0 ml-5">{{reply?.repliedBy}}</h6><span class="ml-5 tweet-color">@{{reply?.replyLoginId}}</span>
                         <div class="p-2 mt-2 ml-5 bg-primary d-flex justify-content-between rounded text-white stats">
-                           {{reply?.replyBody}}
+                           <!-- {{reply?.replyBody}} -->
+                           <span [innerHTML]="reply?.replyBody|hmColor"></span>
                             
                         </div>
-                        <small class="f-right mt-2">{{reply?.replyTimestamp| date: 'MMM d, y, h:mm a'}}</small><br>
+                        <small class="f-right mt-2">{{reply?.replyTimestamp| timeago}}</small><br>
                     </div>
                 </div>
                 <div class="reply-box mt-3 ml-5" attr.id={{tweet.id}}>

@@ -21,7 +21,7 @@ validityFlag:Boolean=false
 showOtherModal:Boolean=true
 changePasswordForm:FormGroup;
   
-baseUrl:any='http://localhost:5000/tweetapp/';
+baseUrl:any='https://tweetapp-api.azurewebsites.net/tweetapp/';
   constructor(private dialog: MatDialog,private http:HttpClient,private toastr:ToastrService,private route:Router) { }
 
   ngOnInit(): void {

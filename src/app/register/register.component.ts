@@ -46,7 +46,7 @@ matchValues(matchTo:string):ValidatorFn{
   register(){
     if(this.registerForm.valid){
     
-    this.http.post('http://localhost:5000/tweetapp/register/user',this.registerForm.value).subscribe((result)=>{
+    this.http.post('https://tweetapp-api.azurewebsites.net/tweetapp/register/user',this.registerForm.value).subscribe((result)=>{
       this.toastr.success('Registration Successful!')
     this.router.navigate(['/login'])
     },

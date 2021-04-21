@@ -14,20 +14,19 @@ export class TweetsComponent implements OnInit {
   dateFormat:any;
   tweetData='';
   userName:any;
-  baseUrl:any='http://localhost:5000/tweetapp/';
+  baseUrl:any='https://tweetapp-api.azurewebsites.net/tweetapp/';
   userData:any;
   replyData:any
   allTweets:any;
-   dateTime = new Date().getTime();
+   
    mockTweet:any=[];
    replyTweetData:any=[];
   
   constructor(private http:HttpClient,private toastr:ToastrService) { }
 
   ngOnInit(): void {
- 
-    this.dateFormat=formatDate(this.dateTime, 'yyyy-MM-dd HH:mm:ss', 'en').toString();
-    console.log("CurrentDate",this.dateFormat.toString());
+  
+    
     this.userName=localStorage.getItem('token');
     let userNameUrl=this.baseUrl+this.userName;
     this.http.get(userNameUrl).subscribe(result=>{
@@ -41,6 +40,8 @@ export class TweetsComponent implements OnInit {
     })
   }
 postTweet(){
+  let dateTime = new Date().getTime();
+  this.dateFormat=formatDate(dateTime, 'yyyy-MM-dd HH:mm:ss', 'en').toString();
   this.mockTweet=[]
   this.mockTweet=
     {
@@ -77,11 +78,13 @@ getAllTweets(){
   })
 }
 replyTweet(replyId,replyData){
+  let dateTime = new Date().getTime();
+  let dateFormat=formatDate(dateTime, 'yyyy-MM-dd HH:mm:ss', 'en').toString();
   console.log("reply-data",replyData)
 this.replyTweetData=
   {
     "replyBody":replyData,
-    "replyTimestamp":this.dateFormat,
+    "replyTimestamp":dateFormat,
     "repliedBy":'',
     'replyLoginId':this.userName,
     "tweetId":replyId

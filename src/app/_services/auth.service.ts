@@ -15,7 +15,7 @@ decodedToken:any;
 
 constructor(private http: HttpClient) { }
 login(model: any) {
-  return this.http.post('http://localhost:5000/tweetapp/login/user', model).pipe(
+  return this.http.post('https://tweetapp-api.azurewebsites.net/tweetapp/login/user', model).pipe(
     map((response: any) => {
       // console.log("Error:::",response);
       const user = response;

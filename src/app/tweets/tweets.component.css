@@ -9,7 +9,9 @@
 
 .stats {
     background: #f2f5f8 !important;
-    color: #000 !important
+    color: #000 !important;
+    overflow-wrap: break-word;
+    word-break: break-word;
 }
 
 .articles {
@@ -46,7 +48,7 @@
     float:right;
 }
 .tab1 {
-    tab-size: 2; 
+    tab-size: 2;
 }
 .box{
     border: 1px solid #bababa;

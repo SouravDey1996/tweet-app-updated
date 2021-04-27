@@ -15,12 +15,13 @@
         </div>
     </div>
     <div class="col-md-8 card p-3">
-        <div class="p-3">Whats on your mind?</div>
+        <div class="p-1">Whats on your mind?</div>
         <div class="row">
-            <div class="col-md-12"><textarea style="width:100%;" maxlength="144" [(ngModel)]="tweetData"  ></textarea>
+            <div class="col-md-12"><textarea class="form-control" style="width:100%;" maxlength="144" [(ngModel)]="tweetData" [innerHTML]='tweetData|hmColor' ></textarea>
 
             </div>
-            <div class="col">
+            <small class="ml-3 mt-2" >{{144-tweetData.length}} characters remaining</small>
+            <div class="col mt-2">
                 <button class="btn btn-primary f-right" [disabled]="tweetData.length==0 || tweetData==null || tweetData.trim()==''" (click)="postTweet()">Post</button>
             </div>
         </div>
@@ -39,7 +40,7 @@
                    <span [innerHTML]="tweet?.body|hmColor"></span>
 
                 </div>
-                <small class="f-right mt-2">{{tweet.createdOn| timeago}}</small><br>
+                <small class="f-right mt-2">{{tweet?.createdOn |timeago}}</small><br>
                 <div class="replies">
                     <div *ngIf="tweet.replies.length>0" class="p-2"><strong>Replies</strong></div>
                     <div *ngFor="let reply of tweet.replies" >
